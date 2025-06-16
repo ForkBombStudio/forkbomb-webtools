@@ -1,0 +1,13 @@
+{
+    "file-compression": {
+        "title": "File Compression",
+        "tools": [
+            {
+                "name": "Zip", 
+                "description": "Compress files into a ZIP archive.",
+                "path": "/",
+                "iconPath": "/"
+            }
+        ]
+    }
+}
