@@ -3,7 +3,9 @@
         "title": "File Compression",
         "tools": [
             {
+                "id": "zip",
                 "name": "Zip", 
+                "category": "file-compression",
                 "description": "Compress files into a ZIP archive.",
                 "path": "/",
                 "iconPath": "/"
