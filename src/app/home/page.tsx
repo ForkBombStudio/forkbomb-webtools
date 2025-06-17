@@ -3,6 +3,7 @@
 import HeaderBar from "../components/header-bar"
 import Link from "next/link"
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
 type ToolMetadata = {
     id: string
@@ -16,28 +17,37 @@ type ToolMetadata = {
 function ToolCard({ tool }: { tool: ToolMetadata }) {
 
     return (
-        <Link href={ `/tool?category=${tool.category}&toolName=${tool.id}` } 
-        className="flex flex-row items-center 
-        border border-gray-300 rounded-md align-middle">
-            <img src={tool.iconPath} alt={`${tool.name} icon`} 
-                 className="w-10 h-10" />
-            <div className="flex flex-col  
-            p-3 w-30 h-20 justify-between">
-                <h3>
-                    { tool.name }
-                </h3>
-                <p>
-                    { tool.description }
-                </p>
-            </div>
-        </Link>
+        <motion.div
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        className="border border-gray-300 rounded-md align-middle">
+            <Link
+            className="flex flex-row items-center"
+            href={ `/tool?category=${tool.category}&toolName=${tool.id}` }>
+                <img src={tool.iconPath} alt={`${tool.name} icon`} 
+                    className="w-10 h-10" />
+                <div className="flex flex-col  
+                p-3 w-30 h-20 justify-between">
+                    <h3>
+                        { tool.name }
+                    </h3>
+                    <p>
+                        { tool.description }
+                    </p>
+                </div>
+            </Link>
+        </motion.div>
     )
 }
 
 function ToolList({title, tools}: {title: string | null, tools: ToolMetadata[]}) {
 
     return (
-        <div className="flex flex-col">
+        <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.3 }}
+        className="flex flex-col">
             {
                 title && 
                 (
@@ -54,7 +64,7 @@ function ToolList({title, tools}: {title: string | null, tools: ToolMetadata[]})
                     ))
                 }
             </div>
-        </div>
+        </motion.div>
     )
 }
 
