@@ -5,16 +5,19 @@ import Link from "next/link"
 import { useEffect, useState } from "react";
 
 type ToolMetadata = {
-    name: string;
-    description: string;
-    path: string;
-    iconPath: string;
+    id: string
+    name: string
+    category: string
+    description: string
+    path: string
+    iconPath: string
 }
 
 function ToolCard({ tool }: { tool: ToolMetadata }) {
 
     return (
-        <Link href="/" className="flex flex-row items-center 
+        <Link href={ `/tool?category=${tool.category}&toolName=${tool.id}` } 
+        className="flex flex-row items-center 
         border border-gray-300 rounded-md align-middle">
             <img src={tool.iconPath} alt={`${tool.name} icon`} 
                  className="w-10 h-10" />
