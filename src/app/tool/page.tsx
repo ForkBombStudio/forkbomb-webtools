@@ -2,16 +2,16 @@
 
 import { JSX } from "react"
 import HeaderBar from "../components/header-bar"
+import { Suspense } from "react";
 import { useSearchParams } from "next/navigation"
 import Zip from "../assets/tools/file-compression/zip";
 
 const toolsMap: Map<string, JSX.Element> = new Map([
-    ["file-compression-zip", <Zip />],
+    ["file-compression-zip", <Zip key={0} />],
     // Add more tools here as needed
 ]);
 
-export default function ToolPage() {
-
+function Tool() {
     const params = useSearchParams()
     const category = params.get("category") as string
     const toolName = params.get("toolName") as string
@@ -35,6 +35,13 @@ export default function ToolPage() {
                 { content }
             </main>
         </>
-        
     );
+}
+
+export default function ToolPage() {
+    return (
+        <Suspense>
+            <Tool />
+        </Suspense>
+    )
 }
