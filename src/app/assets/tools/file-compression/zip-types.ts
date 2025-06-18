@@ -2,7 +2,7 @@
 
 export type ZipMessage = {
     type: "input" | "output" | "error"
-    inputData?: Map<File, string>
+    inputData?: Map<string, Blob>
     outputData?: Blob
 }
 

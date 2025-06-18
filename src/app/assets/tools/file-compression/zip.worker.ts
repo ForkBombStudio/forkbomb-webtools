@@ -2,13 +2,13 @@
 import JSZip from "jszip"
 import { ZipMessage } from "./zip-types"
 
-async function zip(input: Map<File, string>): Promise<Blob> {
+async function zip(input: Map<string, Blob>): Promise<Blob> {
 
     const zip = new JSZip()
 
-    function addFilesToZip(entries: Map<File, string>) {
-        entries.forEach((path, entry) => {
-            zip.file(path, entry)
+    function addFilesToZip(entries: Map<string, Blob>) {
+        entries.forEach((file, path) => {
+            zip.file(path, file)
         })
     }
 
@@ -37,7 +37,7 @@ self.onmessage = function (event: MessageEvent<ZipMessage>) {
         )
     }
 
-    zip(inputData.inputData as Map<File, string>).then(
+    zip(inputData.inputData as Map<string, Blob>).then(
         output => {
             const result: ZipMessage = {
                 type: "output", 
@@ -50,7 +50,7 @@ self.onmessage = function (event: MessageEvent<ZipMessage>) {
             const result: ZipMessage = {
                 type: "error"
             }
-            self.postMessage(err)
+            self.postMessage(result)
         }
     )
 
