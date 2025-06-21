@@ -8,7 +8,7 @@
                 "category": "file-compression",
                 "description": "Compress files into a ZIP archive.",
                 "path": "/",
-                "iconPath": "/"
+                "iconPath": "/assets/icons/tabler-icons/icons/outline/file-zip.svg"
             }
         ]
     }
