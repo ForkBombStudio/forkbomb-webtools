@@ -1,14 +1,21 @@
 "use client";
 
-import { JSX } from "react"
 import HeaderBar from "../components/header-bar"
+import Loading from "../components/loading"
 import { Suspense } from "react";
 import { useSearchParams } from "next/navigation"
-import Zip from "../assets/tools/file-compression/zip";
+import { JSX } from "react"
+import dynamic from "next/dynamic";
+
+{ /* Lazy tool loading */ }
+const Zip = dynamic(() => import("../assets/tools/file-compression/zip"), {
+    loading: () => <Loading />,
+    ssr: false,
+});
 
 const toolsMap: Map<string, JSX.Element> = new Map([
     ["file-compression-zip", <Zip key={0} />],
-    // Add more tools here as needed
+    // Add more tools here as needed 
 ]);
 
 function Tool() {
