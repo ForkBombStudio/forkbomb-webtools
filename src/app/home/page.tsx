@@ -22,13 +22,18 @@ function ToolCard({ tool }: { tool: ToolMetadata }) {
         whileTap={{ scale: 0.95 }}
         className="border border-gray-300 rounded-md align-middle">
             <Link
-            className="flex flex-row items-center"
+            className="flex flex-row items-center pl-2 pr-2 gap-1"
             href={ `/tool?category=${tool.category}&toolName=${tool.id}` }>
-                <img src={tool.iconPath} alt={`${tool.name} icon`} 
-                    className="w-10 h-10" />
+                <img
+                    src={tool.iconPath}
+                    alt={`${tool.name} icon`} 
+                    className="w-12 h-12"
+                />
                 <div className="flex flex-col  
                 p-3 w-30 h-20 justify-between">
-                    <h3>
+                    <h3
+                        className="text-lg font-semibold text-gray-800"
+                    >
                         { tool.name }
                     </h3>
                     <p>
