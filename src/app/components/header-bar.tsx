@@ -1,5 +1,4 @@
 
-import { NavContext } from "@/app/assets/scripts/nav-context";
 
 /* Breadcrumbs Handling */
 

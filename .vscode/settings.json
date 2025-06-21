@@ -1,0 +1,19 @@
+{
+  "javascript.format.semicolons": "remove", // Still good for JS
+  "typescript.format.semicolons": "remove", // **New for TypeScript**
+  "prettier.semi": false,
+  "eslint.probe": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact", // **Important for TSX**
+    "html",
+    "vue"
+  ],
+  "eslint.options": {
+    "configFile": ".eslintrc.js" // or .eslintrc.json
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  }
+}

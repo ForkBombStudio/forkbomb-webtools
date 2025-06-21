@@ -1,5 +1,4 @@
 
-import HeaderBar from "@/app/components/header-bar";
 
 export default function Home() {
     return (
