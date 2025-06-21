@@ -13,7 +13,24 @@ async function zip(input: Map<string, Blob>): Promise<Blob> {
     }
 
     await addFilesToZip(input)
-    return zip.generateAsync({ type: "blob" })
+    return zip.generateAsync(
+        {
+            type: "blob",
+            compression: "DEFLATE", 
+            compressionOptions: {
+                level: 9
+            }, 
+        }, 
+        (meta) => {
+            const progress = meta.percent;
+            self.postMessage(
+                {
+                    type: "update", 
+                    outputData: progress
+                } as ZipMessage
+            );
+        }
+    )
 
 }
 

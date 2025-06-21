@@ -1,9 +1,9 @@
 
 
 export type ZipMessage = {
-    type: "input" | "output" | "error"
+    type: "input" | "output" | "error" | "update"
     inputData?: Map<string, Blob>
-    outputData?: Blob
+    outputData?: Blob | number
 }
 
 
